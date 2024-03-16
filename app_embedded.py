@@ -4,7 +4,7 @@ import cv2
 import os
 import numpy as np
 
-from Embedded.my_model.model import FacialExpressionModel
+from my_model.model import FacialExpressionModel
 
 # Set up the necessary objects and parameters
 st.set_option('deprecation.showfileUploaderEncoding', False)
