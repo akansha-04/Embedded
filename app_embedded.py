@@ -26,7 +26,7 @@ def detect_faces(our_image):
         pred = model.predict_emotion(roi[np.newaxis, :, :, np.newaxis])
         cv2.putText(img, pred, (x, y), font, 1, (255, 255, 0), 2)
         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-        return img, faces, pred
+    return img, faces, pred
 
 # Define the main function
 def main():
