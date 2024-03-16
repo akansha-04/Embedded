@@ -3,12 +3,13 @@ from PIL import Image
 import cv2
 import os
 import numpy as np
-from my_model.model import FacialExpressionModel
+
+from "C:/Users/Akansha/OneDrive/Desktop/my_model/model.py" import FacialExpressionModel
 
 # Set up the necessary objects and parameters
 st.set_option('deprecation.showfileUploaderEncoding', False)
-face_cascade = cv2.CascadeClassifier('Embedded/frecog/haarcascade_frontalface_default.xml')
-model = FacialExpressionModel("Embedded/my_model/model.json", "Embedded/my_model/model_weights.h5")
+face_cascade = cv2.CascadeClassifier("C:/Users/Akansha/OneDrive/Desktop/frecog/haarcascade_frontalface_default.xml")
+model = FacialExpressionModel("C:/Users/Akansha/OneDrive/Desktop/my_model/model.json", "C:/Users/Akansha/OneDrive/Desktop/my_model/model_weights.h5")
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 # Define the function to detect faces
