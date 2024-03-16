@@ -1,6 +1,6 @@
 import streamlit as st
 from PIL import Image
-import opencv-python-headless
+import cv2
 import os
 import numpy as np
 os.chdir('/content/drive/MyDrive/embedded/')
