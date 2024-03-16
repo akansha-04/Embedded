@@ -10,7 +10,7 @@ from bokeh.models.widgets import Div
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 try:
-    face_cascade = cv2.CascadeClassifier('frecog/haarcascade_frontalface_default.xml')
+    face_cascade = cv2.CascadeClassifier("frecog/haarcascade_frontalface_default.xml")
     model = FacialExpressionModel("my_model/model.json", "my_model/model_weights.h5")
     font = cv2.FONT_HERSHEY_SIMPLEX
 except FileNotFoundError:
