@@ -3,31 +3,33 @@ from PIL import Image
 import cv2
 import os
 import numpy as np
-
 from my_model.model import FacialExpressionModel
+from bokeh.models.widgets import Div
 
 # Set up the necessary objects and parameters
 st.set_option('deprecation.showfileUploaderEncoding', False)
-face_cascade = cv2.CascadeClassifier("frecog/haarcascade_frontalface_default.xml")
-model = FacialExpressionModel("my_model/model.json/", "my_model/model_weights.h5/")
-font = cv2.FONT_HERSHEY_SIMPLEX
+face_cascade = cv2.CascadeClassifier('frecog/haarcascade_frontalface_default.xml')
+model = FacialExpressionModel("my_model/model.json", "my_model/model_weights.h5")
+font = cv2.FONT_HERSHEY_SIMPLEX 
+
 
 # Define the function to detect faces
 def detect_faces(our_image):
-    new_img = np.array(our_image.convert('RGB'))
-    img = cv2.cvtColor(new_img, 1)
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    # Detect faces
-    faces = face_cascade.detectMultiScale(gray, 1.1, 4)
-    # Draw rectangle around the faces
-    for (x, y, w, h) in faces:
-        fc = gray[y:y + h, x:x + w]
-        roi = cv2.resize(fc, (48, 48))
-        pred = model.predict_emotion(roi[np.newaxis, :, :, np.newaxis])
-        cv2.putText(img, pred, (x, y), font, 1, (255, 255, 0), 2)
-        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-    return img, faces, pred
+	new_img = np.array(our_image.convert('RGB'))
+	img = cv2.cvtColor(new_img,1)
+	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	# Detect faces
+	faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+	# Draw rectangle around the faces
+	for (x, y, w, h) in faces:
 
+			fc = gray[y:y+h, x:x+w]
+			roi = cv2.resize(fc, (48, 48))
+			pred = model.predict_emotion(roi[np.newaxis, :, :, np.newaxis])
+			cv2.putText(img, pred, (x, y), font, 1, (255, 255, 0), 2)
+			cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+			return img,faces,pred 
+        
 # Define the main function
 def main():
     """Face Expression Detection App"""
