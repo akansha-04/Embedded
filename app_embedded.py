@@ -4,7 +4,7 @@ import cv2
 import os
 import numpy as np
 
-from C:/Users/Akansha/OneDrive/Desktop/my_model/model.py import FacialExpressionModel
+from Embedded.my_model.model import FacialExpressionModel
 
 # Set up the necessary objects and parameters
 st.set_option('deprecation.showfileUploaderEncoding', False)
