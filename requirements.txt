@@ -2,5 +2,5 @@ opencv-python-headless
 tensorflow
 bokeh
 serial
-keras
+keras==2.3.0-tf
 path
