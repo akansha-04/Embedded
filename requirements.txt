@@ -1,7 +1,7 @@
 pip
 opencv-python-headless
-tensorflow==2.3.0
+tensorflow==2.15.0
 bokeh
 serial
-keras==2.3.0
+keras==2.15.0
 path
