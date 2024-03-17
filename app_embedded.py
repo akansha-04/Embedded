@@ -10,6 +10,9 @@ model = FacialExpressionModel("model_01/model.json", "model_01/model_weights.h5"
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 def detect_faces(img):
+    if img is None:
+        return None, 0, []
+
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
     predictions = []
