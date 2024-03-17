@@ -39,7 +39,6 @@ def main():
         result_img, num_faces, prediction = detect_faces(our_image)
         if result_img is not None:
             st.image(result_img)
-            st.success(f"Found {num_faces} face(s)")
             if prediction in ['Happy', 'Neutral', 'Surprise']:
                 st.subheader("Feeling relaxed and happy?")
             elif prediction in ['Angry', 'Sad', 'Disgust', 'Fear']:
