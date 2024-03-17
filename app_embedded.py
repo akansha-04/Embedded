@@ -8,7 +8,7 @@ from my_model.model import FacialExpressionModel
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 face_cascade = cv2.CascadeClassifier("./frecog/haarcascade_frontalface_default.xml")
-model = FacialExpressionModel("./my_model/model.json", "./my_model/model_weights.h5")
+model = FacialExpressionModel("my_model/model.json", "my_model/model_weights.h5")
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 def detect_faces(our_image):
