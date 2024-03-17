@@ -5,6 +5,7 @@ import cv2
 from PIL import Image,ImageEnhance
 import numpy as np 
 import os
+import sys
 dir = path.Path(__file__).abspath()
 sys.path.append(dir.parent.parent)
 from my_model.model import FacialExpressionModel
