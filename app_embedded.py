@@ -24,7 +24,7 @@ def main():
     st.title("Welcome to Emotion Detection!")
 
     # Capture video from webcam
-    cap = cv2.VideoCapture(0)
+    cap = st.camera_input("Take a picture")
 
     while True:
         ret, frame = cap.read()
