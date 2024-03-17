@@ -25,7 +25,7 @@ def detect_faces(our_image):
         return img, len(faces), pred
 
 def main():
-    st.title("Welcome to Bouquet!")
+    st.title("Welcome to Emotion Detection!")
     image_file = st.file_uploader("Enable your video to capture the image:")
     
     if image_file is not None:
