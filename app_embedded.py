@@ -4,7 +4,6 @@ import cv2
 from PIL import Image,ImageEnhance
 import numpy as np 
 import os
-os.chdir('Embedded/')
 from my_model.model import FacialExpressionModel
 import time
 from bokeh.models.widgets import Div
