@@ -4,7 +4,7 @@ import cv2
 from PIL import Image,ImageEnhance
 import numpy as np 
 import os
-os.chdir('Users/Akansha/OneDrive/Desktop/Embedded-main/')
+os.chdir(""C:\Users\Akansha\OneDrive\Desktop\Embedded-main\my_model\model.py"")
 from my_model.model import FacialExpressionModel
 import time
 from bokeh.models.widgets import Div
