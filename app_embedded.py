@@ -5,8 +5,8 @@ import cv2
 from PIL import Image,ImageEnhance
 import numpy as np 
 import os
-directory = path.path(__file__).abspath()
-sys.path.append(directory.parent.parent)
+dir = path.Path(__file__).abspath()
+sys.path.append(dir.parent.parent)
 from my_model.model import FacialExpressionModel
 import time
 from bokeh.models.widgets import Div
