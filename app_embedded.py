@@ -1,18 +1,20 @@
 import streamlit as st 
 import serial
+import path
 import cv2
 from PIL import Image,ImageEnhance
 import numpy as np 
 import os
-os.chdir("C:/Users/Akansha/OneDrive/Desktop/Embedded-main/my_model/model.py")
+directory = path.path(__file__).abspath()
+sys.path.append(directory.parent.parent)
 from my_model.model import FacialExpressionModel
 import time
 from bokeh.models.widgets import Div
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 try:
-    face_cascade = cv2.CascadeClassifier("frecog/haarcascade_frontalface_default.xml")
-    model = FacialExpressionModel("my_model/model.json", "my_model/model_weights.h5")
+    face_cascade = cv2.CascadeClassifier("./frecog/haarcascade_frontalface_default.xml")
+    model = FacialExpressionModel("./my_model/model.json", "./my_model/model_weights.h5")
     font = cv2.FONT_HERSHEY_SIMPLEX
 except FileNotFoundError:
     st.error("Error: Unable to find one or more required files.")
