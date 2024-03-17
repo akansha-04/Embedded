@@ -41,9 +41,9 @@ def main():
             st.image(result_img)
             st.success(f"Found {num_faces} face(s)")
             if prediction in ['Happy', 'Neutral', 'Surprise']:
-                st.subheader("Feeling relaxed and happy? Let our scent diffuser set the mood for you! Sit back and enjoy the fragrance!")
+                st.subheader("Feeling relaxed and happy?")
             elif prediction in ['Angry', 'Sad', 'Disgust', 'Fear']:
-                st.subheader("Feeling a bit stressed? Don't worry! Sit back, relax and let our diffuser take care of you!")
+                st.subheader("Feeling a bit stressed? Don't worry!")
             else:
                 st.error("Uh Oh! We weren't able to detect an emotion properly. Please try again.")
 main()
