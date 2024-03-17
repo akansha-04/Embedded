@@ -1,16 +1,10 @@
 import streamlit as st 
-import serial
-import path
 import cv2
 from PIL import Image,ImageEnhance
 import numpy as np 
 import os
-import sys
-dir = path.Path(__file__).abspath()
-sys.path.append(dir.parent.parent)
 from my_model.model import FacialExpressionModel
-import time
-from bokeh.models.widgets import Div
+
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 face_cascade = cv2.CascadeClassifier("./frecog/haarcascade_frontalface_default.xml")
@@ -32,7 +26,7 @@ def detect_faces(our_image):
 
 def main():
     st.title("Welcome to Bouquet!")
-    image_file = st.camera_input("Enable your video to capture the image:")
+    image_file = st.file_uploader("Enable your video to capture the image:")
     
     if image_file is not None:
         our_image = Image.open(image_file)
