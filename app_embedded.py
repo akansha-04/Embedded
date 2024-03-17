@@ -26,7 +26,7 @@ def main():
     st.title("Welcome to Emotion Detection!")
 
     # Capture video from webcam
-    frame = st.camera_input("Take a picture", use_video_stream=True)
+    frame = st.camera_input("Take a picture")
     
     result_img, num_faces, predictions = detect_faces(frame)
     if result_img is not None:
