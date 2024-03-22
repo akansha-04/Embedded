@@ -1,17 +1,18 @@
-import streamlit as st 
+import streamlit as st
 import cv2
 from PIL import Image
-import numpy as np 
+import numpy as np
+import os
 from model_01.model import FacialExpressionModel
-import serial
+import serial  # Import the serial library
+
+# Initialize the serial connection to the Arduino
+ser = serial.Serial('COM5', 9600)  # Replace 'COM3' with the correct port for your Arduino
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 face_cascade = cv2.CascadeClassifier("frecog/haarcascade_frontalface_default.xml")
 model = FacialExpressionModel("model_01/model.json", "model_01/model_weights.h5")
 font = cv2.FONT_HERSHEY_SIMPLEX
-
-# Connect to Arduino
-ser = serial.Serial('COM5', 9600)  # Modify 'COM3' with your Arduino port
 
 def detect_faces(our_image):
     new_img = np.array(our_image.convert('RGB'))
@@ -28,8 +29,8 @@ def detect_faces(our_image):
 
 def main():
     st.title("Welcome to Emotion Detection!")
-    image_file = st.file_uploader("Upload an image for emotion detection:")
-    
+    image_file = st.file_uploader("Enable your video to capture the image:")
+
     if image_file is not None:
         our_image = Image.open(image_file)
         st.text("Original Image")
@@ -44,12 +45,14 @@ def main():
             st.success(f"Found {num_faces} face(s)")
             if prediction in ['Happy', 'Neutral', 'Surprise']:
                 st.subheader("Feeling relaxed and happy?")
-                ser.write(b'Happy\n')  # Sending 'Happy' to Arduino
+                # Send a signal to the Arduino (e.g., turn on an LED)
+                ser.write(b'H')  # Send 'H' to Arduino
             elif prediction in ['Angry', 'Sad', 'Disgust', 'Fear']:
                 st.subheader("Feeling a bit stressed? Don't worry!")
-                ser.write(b'Stressed\n')  # Sending 'Stressed' to Arduino
+                # Send a different signal to the Arduino (e.g., turn off the LED)
+                ser.write(b'L')  # Send 'L' to Arduino
             else:
                 st.error("Uh Oh! We weren't able to detect an emotion properly. Please try again.")
 
-
 main()
+
