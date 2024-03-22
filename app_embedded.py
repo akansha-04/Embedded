@@ -7,7 +7,7 @@ from model_01.model import FacialExpressionModel
 from pyserial import Serial  # Import the serial library
 
 # Initialize the serial connection to the Arduino
-ser = serial.Serial('COM5', 9600) 
+ser = serial.Serial(port='COM5',baudrate=9600) 
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 face_cascade = cv2.CascadeClassifier("frecog/haarcascade_frontalface_default.xml")
