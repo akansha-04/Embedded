@@ -3,5 +3,6 @@ opencv-python-headless
 tensorflow==2.15.0
 bokeh
 serial
+pyserial
 keras==2.15.0
 path
