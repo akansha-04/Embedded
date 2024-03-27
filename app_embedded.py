@@ -1,13 +1,10 @@
-import streamlit as st
+import streamlit as st 
 import cv2
-from PIL import Image
-import numpy as np
+from PIL import Image,ImageEnhance
+import numpy as np 
 import os
 from model_01.model import FacialExpressionModel
-from pyserial import Serial  # Import the serial library
 
-# Initialize the serial connection to the Arduino
-ser = serial.Serial(port='COM5',baudrate=9600) 
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 face_cascade = cv2.CascadeClassifier("frecog/haarcascade_frontalface_default.xml")
@@ -30,7 +27,7 @@ def detect_faces(our_image):
 def main():
     st.title("Welcome to Emotion Detection!")
     image_file = st.file_uploader("Enable your video to capture the image:")
-
+    
     if image_file is not None:
         our_image = Image.open(image_file)
         st.text("Original Image")
@@ -45,14 +42,8 @@ def main():
             st.success(f"Found {num_faces} face(s)")
             if prediction in ['Happy', 'Neutral', 'Surprise']:
                 st.subheader("Feeling relaxed and happy?")
-                # Send a signal to the Arduino (e.g., turn on an LED)
-                ser.write(b'H')  # Send 'H' to Arduino
             elif prediction in ['Angry', 'Sad', 'Disgust', 'Fear']:
                 st.subheader("Feeling a bit stressed? Don't worry!")
-                # Send a different signal to the Arduino (e.g., turn off the LED)
-                ser.write(b'L')  # Send 'L' to Arduino
             else:
                 st.error("Uh Oh! We weren't able to detect an emotion properly. Please try again.")
-
 main()
-
